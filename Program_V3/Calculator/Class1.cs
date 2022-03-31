@@ -25,7 +25,7 @@
 
         public float Division(float a, float b)
         {
-            if (IsZero(b)) return a / b;
+            if (!IsZero(b)) return a / b;
             else return 1;
         }
 

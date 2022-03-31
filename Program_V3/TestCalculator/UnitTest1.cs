@@ -54,6 +54,9 @@ namespace TestCalculator
         {
 
             Assert.AreEqual(calc.Division(6, 6), 1);
+            Assert.AreEqual(calc.Division(12, -6), -2);
+            Assert.AreEqual(calc.Division(12, 0), 1);
+            Assert.AreEqual(calc.Division(4444, 2222), 2);
 
         }
 
