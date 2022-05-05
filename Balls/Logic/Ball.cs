@@ -2,7 +2,7 @@
 
 namespace Logic
 {
-    internal class Ball
+    public class Ball
     {
         private readonly int size;
         private int x;
