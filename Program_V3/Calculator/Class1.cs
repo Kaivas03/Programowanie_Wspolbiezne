@@ -12,9 +12,9 @@
             return a - b;
         }
 
-        public float Multiplication(float a, float c)
+        public float Multiplication(float a, float b)
         {
-            return a * c;
+            return a * b;
         }
 
         public bool IsZero(float a)
