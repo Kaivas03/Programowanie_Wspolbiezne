@@ -1,0 +1,10 @@
+C:\Users\mical\source\repos\WindowApp\bin\Debug\WindowApp.exe.config
+C:\Users\mical\source\repos\WindowApp\bin\Debug\WindowApp.exe
+C:\Users\mical\source\repos\WindowApp\bin\Debug\WindowApp.pdb
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.csproj.AssemblyReference.cache
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.Form1.resources
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.Properties.Resources.resources
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.csproj.GenerateResource.cache
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.csproj.CoreCompileInputs.cache
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.exe
+C:\Users\mical\source\repos\WindowApp\obj\Debug\WindowApp.pdb
