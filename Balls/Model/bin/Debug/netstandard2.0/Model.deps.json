@@ -81,7 +81,7 @@
         "runtime": {
           "UIAutomationProvider.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9141"
+            "fileVersion": "3.0.6920.9151"
           }
         },
         "resources": {
@@ -94,7 +94,7 @@
         "runtime": {
           "UIAutomationTypes.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9141"
+            "fileVersion": "3.0.6920.9151"
           }
         },
         "resources": {

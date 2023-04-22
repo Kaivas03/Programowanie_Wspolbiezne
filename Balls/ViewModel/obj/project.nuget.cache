@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "6KOFT+Kgg8yHL/UNyGO9J2the1LaqYVUXBW1Q2o1/v2vkHwLo8AJxOkBdRSCOci25WU1e0jrt9drerq57mtDZg==",
+  "dgSpecHash": "OXY4i7RJaoHtUv5Kx9hwKe+Jcov4fohegLIiJg/jX1ManHMoFgwYxE2hQNht1K/AnfOPqEe7uqzDqWt0FJHnRA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mical\\source\\repos\\Balls\\ViewModel\\ViewModel.csproj",
+  "projectFilePath": "D:\\VSprojects\\ProWsp\\Balls\\ViewModel\\ViewModel.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mical\\.nuget\\packages\\extended.wpf.toolkit\\4.3.0\\extended.wpf.toolkit.4.3.0.nupkg.sha512",
-    "C:\\Users\\mical\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\mical\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\zygmu\\.nuget\\packages\\extended.wpf.toolkit\\4.5.0\\extended.wpf.toolkit.4.5.0.nupkg.sha512",
+    "C:\\Users\\zygmu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\zygmu\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Extended.Wpf.Toolkit 4.3.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
+      "message": "Package 'Extended.Wpf.Toolkit 4.5.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework '.NETStandard,Version=v2.0'. This package may not be fully compatible with your project.",
       "libraryId": "Extended.Wpf.Toolkit",
       "targetGraphs": [
         ".NETStandard,Version=v2.0"

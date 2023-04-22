@@ -214,19 +214,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mical\\.nuget\\packages\\": {}
+    "C:\\Users\\zygmu\\.nuget\\packages\\": {},
+    "D:\\VSshared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mical\\source\\repos\\Balls\\Model\\Model.csproj",
+      "projectUniqueName": "D:\\VSprojects\\ProWsp\\Balls\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\mical\\source\\repos\\Balls\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\mical\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mical\\source\\repos\\Balls\\Model\\obj\\",
+      "projectPath": "D:\\VSprojects\\ProWsp\\Balls\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\zygmu\\.nuget\\packages\\",
+      "outputPath": "D:\\VSprojects\\ProWsp\\Balls\\Model\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\VSshared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\mical\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zygmu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -240,8 +245,8 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "projectReferences": {
-            "C:\\Users\\mical\\source\\repos\\Balls\\Logic\\Logic.csproj": {
-              "projectPath": "C:\\Users\\mical\\source\\repos\\Balls\\Logic\\Logic.csproj"
+            "D:\\VSprojects\\ProWsp\\Balls\\Logic\\Logic.csproj": {
+              "projectPath": "D:\\VSprojects\\ProWsp\\Balls\\Logic\\Logic.csproj"
             }
           }
         }
@@ -274,7 +279,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

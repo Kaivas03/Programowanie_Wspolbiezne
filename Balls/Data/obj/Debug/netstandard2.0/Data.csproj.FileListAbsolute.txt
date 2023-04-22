@@ -18,3 +18,13 @@ C:\Users\mical\Desktop\Balls\Data\obj\Debug\netstandard2.0\Data.AssemblyInfo.cs
 C:\Users\mical\Desktop\Balls\Data\obj\Debug\netstandard2.0\Data.csproj.CoreCompileInputs.cache
 C:\Users\mical\Desktop\Balls\Data\obj\Debug\netstandard2.0\Data.dll
 C:\Users\mical\Desktop\Balls\Data\obj\Debug\netstandard2.0\Data.pdb
+D:\VSprojects\ProWsp\Balls\Data\bin\Debug\netstandard2.0\Data.deps.json
+D:\VSprojects\ProWsp\Balls\Data\bin\Debug\netstandard2.0\Data.dll
+D:\VSprojects\ProWsp\Balls\Data\bin\Debug\netstandard2.0\Data.pdb
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.csproj.AssemblyReference.cache
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.AssemblyInfoInputs.cache
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.AssemblyInfo.cs
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.csproj.CoreCompileInputs.cache
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.dll
+D:\VSprojects\ProWsp\Balls\Data\obj\Debug\netstandard2.0\Data.pdb

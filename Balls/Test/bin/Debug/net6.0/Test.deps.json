@@ -1096,7 +1096,7 @@
         "runtime": {
           "PresentationCore.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9150"
+            "fileVersion": "3.0.6920.9155"
           }
         },
         "resources": {
@@ -1109,7 +1109,7 @@
         "runtime": {
           "PresentationFramework.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9150"
+            "fileVersion": "3.0.6920.9155"
           }
         },
         "resources": {
@@ -1122,7 +1122,7 @@
         "runtime": {
           "UIAutomationProvider.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9141"
+            "fileVersion": "3.0.6920.9151"
           }
         },
         "resources": {
@@ -1135,7 +1135,7 @@
         "runtime": {
           "UIAutomationTypes.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9141"
+            "fileVersion": "3.0.6920.9151"
           }
         },
         "resources": {
@@ -1148,7 +1148,7 @@
         "runtime": {
           "System.Printing.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9150"
+            "fileVersion": "3.0.6920.9155"
           }
         },
         "resources": {
@@ -1161,7 +1161,7 @@
         "runtime": {
           "ReachFramework.dll": {
             "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.6920.9150"
+            "fileVersion": "3.0.6920.9155"
           }
         },
         "resources": {

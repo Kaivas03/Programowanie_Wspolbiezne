@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Logic
+namespace Data
 {
     public class Ball
     {
