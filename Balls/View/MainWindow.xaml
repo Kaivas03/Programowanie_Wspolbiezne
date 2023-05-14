@@ -3,22 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-       
-        xmlns:local="clr-namespace:View" xmlns:vm="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:mv="clr-namespace:ViewModel;assembly=ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" Background="AliceBlue" Foreground="Black" BorderBrush="#FFFB3737 ">
-
-
+        Title="ConcurrentProgrammingPart1" Height="400" Width="500" ResizeMode="NoResize">
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <mv:MainWindowViewModel />
     </Window.DataContext>
-    
     <Grid>
-        <ContentPresenter Content="{Binding Canvas}"/>
-        <Border BorderBrush="#FF119A33" BorderThickness="5,5,5,5" Height="480" Width="600" HorizontalAlignment="Center" VerticalAlignment="Top">
-        </Border>
-        <TextBox HorizontalAlignment="Center" Margin="0,514,0,0" TextWrapping="Wrap" Text="{Binding BallVal}"  VerticalAlignment="Top" Width="200" Height="40" TextAlignment="Center" FontSize="24px" BorderBrush="#FF119A33" BorderThickness="3,3,3,3" />
-        <Button Margin="50,494,530,10" Content="ADD" FontSize="40" Command="{Binding AddCommand}" ></Button>
-        <Button x:Name= "StopButton" Margin="535,494,45,10" Content="STOP" FontSize="40" Command="{Binding StopCommand}"></Button>
+
+        <ItemsControl ItemsSource="{Binding Spheres}" HorizontalAlignment="Left" VerticalAlignment="Top " Margin="120,0,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas Background="Cyan" Width="350" Height="350" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="{x:Type ContentPresenter}">
+                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
+                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Width="{Binding Diameter}" Height="{Binding Diameter}" Fill="red" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Button IsEnabled="{Binding IsReadyToBegin}"  Content="SIMULATE" Width="90" Height="90" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Command="{Binding BeginSimulationAction}" Click="Button_Click"/>
+        <TextBox x:Name="textBox" Text="{Binding TextBox}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Margin="10,210,0,0" Height="29"/>
+        <Button IsEnabled="{Binding DidntStartYet}" Content="CREATE BALLS" Width="90" Height="90" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Command="{Binding PrepareSimulationAction}"/>
     </Grid>
 </Window>
