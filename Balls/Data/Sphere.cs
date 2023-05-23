@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,7 +11,6 @@ namespace DataLayer
     public class Sphere : IObservable<Sphere>
     {
         //Properties:
-        private Random randomiser = new Random();
         public int Id { get; set; }
         public int R { get; set; }
         public double X { get; set; }
@@ -37,6 +37,7 @@ namespace DataLayer
         //Function that allows us to pick random starting positions for the spheres.
         public void PickRandomPosition(int width, int height)
         {
+            Random randomiser = new Random();
             //We use max width and hight - R*4, beacuse we want the balls to start with some distance from the edge of our window.
             this.X = this.R * 4 + randomiser.Next(width - this.R * 8);
             this.Y = this.R * 4 + randomiser.Next(height - this.R * 8);
@@ -47,7 +48,7 @@ namespace DataLayer
         {
             //Changes speed.
             this.Speed = 3;
-
+            Random randomiser = new Random();
             //We pick randomly either -1 or 1.
             int X_axis = randomiser.Next(2) == 1 ? 1 : -1;
             int Y_axis = randomiser.Next(2) == 1 ? 1 : -1;
@@ -56,20 +57,6 @@ namespace DataLayer
             this.Direction_X = (double)(0.0001 * X_axis * (1 + randomiser.Next(10000))) * Speed;
             this.Direction_Y = (double)(0.0001 * Y_axis * (1 + randomiser.Next(10000))) * Speed;
 
-        }
-
-        //This method makes a single sphere change it's position towards the direction.
-        public void Move()
-        {
-            //We move some distance that is increased by given speed.
-            lock (this)
-            {
-                X += Direction_X;
-                Y += Direction_Y;
-            }
-
-
-            NotifyObservers();
         }
 
         //Here we change direction of one axis if the sphere reaches the screen's edge.
@@ -83,7 +70,22 @@ namespace DataLayer
             NotifyObservers();
         }
 
-        public void StartMoving()
+        //This method makes a single sphere change it's position towards the direction.
+        public void Move()
+        {
+            //A well known movement operation from the previous assignment with lock, so that tasks won't be 
+            //trying to access data that is used by another task, when we don't want that.
+            lock (this)
+            {
+                //We move some distance.
+                X += Direction_X;
+                Y += Direction_Y;
+            }
+            NotifyObservers();
+        }
+
+        //Method performed as task in loop. It executes movement (one tick) and notifies observers.
+        private void MovingTask()
         {
             while (true)
             {
@@ -92,6 +94,7 @@ namespace DataLayer
             }
         }
 
+        //When notified every observer receives update to data it's working on.
         public void NotifyObservers()
         {
             foreach (var observer in observers.ToList())
@@ -100,16 +103,16 @@ namespace DataLayer
                 {
                     observer.OnNext(this);
                 }
-
             }
         }
 
-        public void StartMovingThread()
+        //If task not started, we create a task that is meant to move the ball.
+        public void StartMoving()
         {
             if (SphereThread is null)
             {
                 CancellationToken token = new CancellationToken();
-                this.SphereThread = new Task(StartMoving, token);
+                this.SphereThread = new Task(MovingTask, token);
             }
             SphereThread.Start();
         }
@@ -123,19 +126,19 @@ namespace DataLayer
 
         private class Unsubscriber : IDisposable
         {
-            private IList<IObserver<Sphere>> _observers;
-            private IObserver<Sphere> _observer;
+            private IList<IObserver<Sphere>> observers;
+            private IObserver<Sphere> observer;
 
             public Unsubscriber(IList<IObserver<Sphere>> observers, IObserver<Sphere> observer)
             {
-                this._observers = observers;
-                this._observer = observer;
+                this.observers = observers;
+                this.observer = observer;
             }
 
             public void Dispose()
             {
-                if (_observer != null && _observers.Contains(_observer))
-                    _observers.Remove(_observer);
+                if (observer != null && observers.Contains(observer))
+                    observers.Remove(observer);
             }
         }
     }

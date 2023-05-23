@@ -31,6 +31,7 @@ namespace Logic
         private class BusinessLogic : LogicAPI
         {
             private readonly DataAPI DataLayer;
+            private Data.Logger logger;
             private IDisposable unsubscriber;
             private IList<IObserver<int>> observers;
 
@@ -40,7 +41,13 @@ namespace Logic
                 DataLayer = api;
                 Subscribe(DataLayer);
                 observers = new List<IObserver<int>>();
+
+                //We create logger when creating the logic of this application.
+                logger = new Data.Logger();
+                logger.StartLogging();
+
                 int[] table = new int[2];
+                //Size is asigned based on width and height stored in data layer.
                 table[0] = DataLayer.GetWidth();
                 table[1] = DataLayer.GetHeight();
                 Size = table;
@@ -67,33 +74,37 @@ namespace Logic
                 DataLayer.RandomisePozitions(width, height);
             }
 
+            //Switches chosen direction of a sphere to oposite.
             public void SwitchDirections(int id, bool isX)
             {
                 DataLayer.SwitchDirectionForSphere(id, isX);
                 NotifyObservers(id);
             }
 
+            //Getters for sphere's position.
             public override double GetSphereX(int id)
             {
                 return DataLayer.GetSpherePositionX(id);
             }
-
             public override double GetSphereY(int id)
             {
                 return DataLayer.GetSpherePositionY(id);
             }
 
+            //Getter for sphere's radius.
             public override double GetSphereRadius(int id)
             {
                 return DataLayer.GetSphereRadius(id);
             }
 
+            //Tells us how many spheres are stored.
             public override int CountSpheres()
             {
                 return DataLayer.GetSpheresCount();
             }
 
-            private void CheckBorders(int id)
+            //Checks for border colision of a sphere and, if necesseary, switches one of it's directions.
+            private void CheckBoundries(int id)
             {
                 double Position_X = DataLayer.GetSpherePositionX(id);
                 double Position_Y = DataLayer.GetSpherePositionY(id);
@@ -106,6 +117,8 @@ namespace Logic
 
             }
 
+            //With power of maths finds distance between current sphere and other spheres. If distance is lower or equal
+            //to sum of this and other sphere's radians - they collide!
             private void CheckCollisions(int id)
             {
                 for (int i = 0; i < DataLayer.GetSpheresCount(); i++)
@@ -117,9 +130,10 @@ namespace Logic
 
                     if (Math.Abs(distance) <= DataLayer.GetSphereRadius(id) + DataLayer.GetSphereRadius(i))
                     {
-                        double[] newMovement = ImpulseSpeed(id, i);
-                        DataLayer.SetSphereMovement(id, newMovement[0], newMovement[1]);
-                        DataLayer.SetSphereMovement(i, newMovement[2], newMovement[3]);
+                        //When collision happens we assign new movement as a result of executing NewMovement() method.
+                        double[] newMovement = NewMovement(id, i);
+                        DataLayer.SetSphereDirections(id, newMovement[0], newMovement[1]);
+                        DataLayer.SetSphereDirections(i, newMovement[2], newMovement[3]);
                     }
                 }
 
@@ -147,11 +161,16 @@ namespace Logic
 
             public override void OnNext(Sphere Sphere)
             {
-                CheckBorders(Sphere.Id);
+                //We can succesfully use OnNext method to always creaty entry in the log whenever a ball is about
+                //to move.
+                logger.AddLog(DataLayer.PrepareLog(Sphere.Id));
+                //For every sphere we check for border collision, collision with other balls and then notify observers.
+                CheckBoundries(Sphere.Id);
                 CheckCollisions(Sphere.Id);
                 NotifyObservers(Sphere.Id);
             }
 
+            //When notified, we go with next ball.
             public void NotifyObservers(int id)
             {
                 foreach (var observer in observers)
@@ -165,7 +184,8 @@ namespace Logic
 
             }
 
-            public double[] ImpulseSpeed(int id, int id2)
+            //VERY POWERFULL MATHS for calculating new vector of movement for two spheres that collided. It takes speed, position of spheres and mass into account.
+            public double[] NewMovement(int id, int id2)
             {
                 double mass = DataLayer.GetSphereMass(id);
                 double otherMass = DataLayer.GetSphereMass(id2);
