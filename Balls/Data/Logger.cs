@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Data
 {
@@ -36,30 +38,33 @@ namespace Data
         {
             LoggingTask.Start();
         }
+        
+        public void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+
+        }
 
         public void Logging()
         {
-            //Stoper. Do odmierzania czasu.
-            Stopwatch stopwatch = Stopwatch.StartNew();
+
             //And the task itself withn a loop.
             while (true)
             {
                 //File.AppendAllText(file, stopwatch.ElapsedMilliseconds.ToString() + "\n");
-                if (stopwatch.ElapsedMilliseconds % 10 == 0)
+
+                //We create a temporary queue witch is a product of th GetLogs method.
+                //It gives us all new logs that haven't been written to the file yet.
+                Queue<String> tmp = GetLogs();
+
+                //As long as there are elements within our queue...
+                while (tmp.Count > 0)
                 {
-                    //We create a temporary queue witch is a product of th GetLogs method.
-                    //It gives us all new logs that haven't been written to the file yet.
-                    Queue<String> tmp = GetLogs();
-
-                    //As long as there are elements within our queue...
-                    while (tmp.Count > 0)
-                    {
-                        //..we append them to our file from the queue.       
-                        File.AppendAllText(file, tmp.Dequeue() + "\n\n");
-                    }
-
-
+                    //..we append them to our file from the queue.       
+                    File.AppendAllText(file, tmp.Dequeue() + "\n\n");
                 }
+
+
+                
             }
         }
 

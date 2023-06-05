@@ -1,6 +1,7 @@
 ﻿using DataLayer;
 using System;
 using System.Collections.Generic;
+using System.Timers;
 
 namespace Logic
 {
@@ -51,6 +52,11 @@ namespace Logic
                 table[0] = DataLayer.GetWidth();
                 table[1] = DataLayer.GetHeight();
                 Size = table;
+                Timer timer = new Timer(2000);
+
+                timer.Elapsed += OnTimedEvent;
+                timer.AutoReset = true;
+                timer.Enabled = true;
             }
 
             //Move all spheres using method from API.
@@ -159,11 +165,19 @@ namespace Logic
                 throw error;
             }
 
+            public void OnTimedEvent(Object source, ElapsedEventArgs e)
+            {
+                for (int i = 0; i < DataLayer.GetSpheresCount(); i++)
+                {
+                    logger.AddLog(DataLayer.PrepareLog(DataLayer.GetID(i)));
+                }
+            }
+
             public override void OnNext(Sphere Sphere)
             {
                 //We can succesfully use OnNext method to always creaty entry in the log whenever a ball is about
                 //to move.
-                logger.AddLog(DataLayer.PrepareLog(Sphere.Id));
+                
                 //For every sphere we check for border collision, collision with other balls and then notify observers.
                 CheckBoundries(Sphere.Id);
                 CheckCollisions(Sphere.Id);

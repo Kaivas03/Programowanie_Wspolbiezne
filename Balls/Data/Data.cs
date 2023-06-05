@@ -10,6 +10,7 @@ namespace DataLayer
         public abstract int AddSphere();
         public abstract int GetHeight();
         public abstract int GetWidth();
+        public abstract int GetID(int id);
         public abstract double GetSpherePositionX(int id);
         public abstract double GetSpherePositionY(int id);
         public abstract void SetSphereSpeed(int id, double speed);
@@ -68,6 +69,11 @@ namespace DataLayer
         public override double GetSphereSpeed(int id)
         {
             return GetSphere(id).Speed;
+        }
+
+        public override int GetID(int id)
+        {
+            return GetSphere(id).Id;
         }
 
         //Returns mass of particular sphere.
